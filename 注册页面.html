@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<title>register</title>
+<style type="text/css">
+body { margin: 0; font: 14px/1.4 "Microsoft YaHei"; background-color: #EDEFF0; }
+a { color: #50B6E5; }
+.constr { width: 1200px; margin-left: auto; margin-right: auto; }
+.regist-head{
+	height: 60px;
+	line-height: 60px;
+	padding-left: 30px;
+	background-color: #be3948;
+	color: #fff;
+	font-size: 18px;
+}
+.regist-body{
+	min-height: 400px;
+	padding: 100px 0;
+	background-color: #fff;
+}
+.regist-main{
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.icon-fixed-right{
+	height: 0;
+	text-align: right;
+	overflow: hidden;
+}
+.icon-fixed-rightA{
+	display: inline;
+	position: fixed;
+	margin-left: -20px;
+	bottom: 100px;
+}
+.goto_top_diaocha, .goto_top_app, .goto_top_feed{
+	display: block;
+	width: 48px;
+	height: 48px;
+	margin-top: 10px;
+	background: url(http://img.mukewang.com/5453076e0001869c01920098.png) no-repeat;
+}
+.goto_top_diaocha{background-position: -48px 0;}
+.goto_top_diaocha:hover { background-position: -48px -50px; }
+.goto_top_app{background-position: -96px 0;}
+.goto_top_app:hover {background-position: -96px -50px;}
+.goto_top_feed{background-position: -144px 0;}
+.goto_top_feed:hover {background-position: -144px -50px;}
+.regist-group{margin-top: 20px; overflow: hidden;}
+.regist-label{
+	width: 70px;
+	padding-top: 10px;
+	float: left;
+}
+.regist-cell{display: table-cell; *display: inline-block;}
+.regist-input{
+	height: 18px;
+	line-height: 18px;
+	width: 260px;
+	padding: 10px 5px;
+	margin: 0 10px 0 0;
+	border: 1px solid #d0d6d9;
+	vertical-align: top;
+}
+.regist-code-input{width: 130px;}
+.regist-btn{
+	display: inline-block;
+	width: 160px;
+	line-height: 40px;
+	background-color: #39b94e;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+.regist-btn:hover{background-color: #33a646;}
+.icon-warn{
+	display: inline-block;
+	width: 20px;
+	height: 21px;
+	background: url(http://img.mukewang.com/5453084a00016ae300120012.gif) no-repeat center; 
+}
+.regist-star{
+	position: absolute;
+	margin-left: -1em;
+	color: #f30;
+	font-family: simsun;
+}
+.regist-remark{
+	position: absolute;
+	line-height: 21px;
+	padding-top: 9px;
+	color: #666;
+}
+.regist-warn{
+	padding-left: 20px;
+	color: #be3948;
+	display: none;
+
+}
+.regist-warn > .icon-warn{
+	position: absolute;
+	margin-left: -20px;
+}
+
+</style>	
+</head>
+<body>
+<div class="constr">
+	<div class="regist-head">注册</div>
+	<div class="regist-body">
+		<div class="regist-main">
+			<div class="regist-group">
+				<label class="regist-label"><span class="regist-star">*</span>登录邮箱</label>
+				<div class="regist-cell">
+					<input type="email" class="regist-input"><span class="regist-remark regist-warn" id="email_error"><i class="icon-warn"></i>邮箱格式不准确
+					</span>
+				</div>
+			</div>
+			<div class="regist-group">
+				<label class="regist-label"><span class="regist-star">*</span>登录密码</label>
+				<div class="regist-cell">
+					<input id="pwd1" type="password" class="regist-input" placeholder="6~14个字符（可包含数字、字母和下划线）" onblur="checkPwd(this.value)"><span class="regist-remark regist-warn" id="pwd_error"><i class="icon-warn"></i>密码格式不准确</span>
+				</div>
+			</div>
+			<div class="regist-group">
+				<label class="regist-label"><span class="regist-star">*</span>重复密码</label>
+				<div class="regist-cell">
+					<input type="password" class="regist-input" onblur="verifyPwd(this.value)"><span class="regist-remark regist-warn" id="pwdCheck_error"><i class="icon-warn"></i>两次密码不准确</span>
+				</div>
+			</div>
+			<div class="regist-group">
+				<label class="regist-label"><span class="regist-star">*</span>用户昵称</label>
+				<div class="regist-cell">
+					<input type="text" class="regist-input" maxlength="14" onblur="checkName(this.value)" name="userName"><span class="regist-remark regist-warn" id="userName-error"><i class="icon-warn"></i>用户名不准确
+				</span>
+				</div>
+			</div>
+			<div class="regist-group">
+				<label class="regist-label">手机号码</label>
+				<div class="regist-cell"><input type="tel" class="regist-input" > </div>
+			</div>
+			<div class="regist-group">
+				<label class="regist-label"><span class="regist-star">*</span>验证码</label>
+				<div class="regist-cell"><input class="regist-input regist-code-input"><img src="http://img.mukewang.com/545308540001678401500040.jpg"></div>
+			</div>
+			<div class="regist-group">
+            	<label class="regist-label">&nbsp;</label>
+                <div class="regist-cell">
+                	<input type="checkbox" checked><label>我已阅读并同意<a href="##">网站协议</a></label>
+                    <p>
+                    	<a href="javascript:" class="regist-btn">立即注册</a>
+                    </p>
+                </div>
+            </div>
+		</div>
+		<div class="icon-fixed-right">
+			&nbsp;<div class="icon-fixed-rightA">
+					<a href="http://www.imooc.com/activity/diaocha" class="goto_top_diaocha"></a>
+	                <a href="http://www.imooc.com/mobile/app" class="goto_top_app"></a>
+	                <a href="http://www.imooc.com/user/feedback" class="goto_top_feed"></a>
+			     </div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+//检测邮箱格式
+function checkEmail(email) {
+	if (!/^[\w\.\-]+@\w*[\.]?\w*/.test(email)) {
+		document.getElementById('email_error').style.display = 'inline-block';
+	}else{
+		document.getElementById('email_error').style.display = 'none';
+	}
+}
+//检测用户名格式,有bug
+function checkName(userName) {
+	if(!/^\w+$/.test(userName)){
+		document.getElementById('userName-error').style.display = 'inline-block';
+	}else{
+		document.getElementById('userName-error').style.display = 'none';
+	}
+} 
+//检测密码格式
+function checkPwd(pwd) {
+	if(!/^\w{6,14}$/.test(pwd)){
+		document.getElementById("pwd_error").style.display = 'inline-block';
+	}else{
+		document.getElementById("pwd_error").style.display = 'none';
+	}
+}
+//两次密码是否相同
+function verifyPwd(pwd) {
+	if (document.getElementById('pwd1').value != pwd) {
+		document.getElementById('pwdCheck_error').style.display = 'inline-block';
+	}else{
+		document.getElementById('pwdCheck_error').style.display = 'none';
+	}
+}
+</script>	
+</body>
+</html>
