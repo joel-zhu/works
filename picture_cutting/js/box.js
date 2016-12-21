@@ -88,9 +88,9 @@ window.onload = function() {
 function rightMove(e) {
 	var x = e.clientX;
 	var addWidth = "";
-	var widthBefore = mainDiv.offsetWidth - 2;
-	addWidth = x - getPosition(mainDiv).left - widthBefore;
-	mainDiv.style.width = addWidth + widthBefore +"px";
+	var widthBefore = mainDiv.offsetWidth - 2;//移动前的宽度，
+	addWidth = x - getPosition(mainDiv).left - widthBefore;//增加的宽度
+	mainDiv.style.width = addWidth + widthBefore +"px";//移动后的宽度
 }
 
 function upMove(e) {
@@ -132,7 +132,7 @@ function getPosition(node) {
 	}
 	  return {'left' : left, 'top' : top};
 }
-
+//选取区域预览
 function setChoice() {
 	var top = mainDiv.offsetTop;
 	var right = mainDiv.offsetWidth + mainDiv.offsetLeft;
@@ -141,15 +141,15 @@ function setChoice() {
 	var img2 = document.getElementById('img2');
 	img2.style.clip = "rect("+ top + "px," + right + "px," + bottom + "px," + left + "px)";
 }
-
+//右侧剪切结果预览
 function setPreview() {
 	var top = mainDiv.offsetTop;
 	var right = mainDiv.offsetWidth + mainDiv.offsetLeft;
 	var bottom =mainDiv.offsetHeight + mainDiv.offsetTop;
 	var left = mainDiv.offsetLeft;
 	var img3 = document.getElementById('img3');
-	img3.style.top = -top + "px";
-	img3.style.left = -left + 'px';
+	img3.style.top = -top + "px";//固定在左上角	
+	img3.style.left = -left + 'px';//固定左上角	
 	img3.style.clip = "rect("+ top + "px," + right + "px," + bottom + "px," + left + "px)";
 }
 }
